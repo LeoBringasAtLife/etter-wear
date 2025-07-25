@@ -26,7 +26,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 0.75rem 1.5rem;
-            background-color: #fff;
+            background-color: rgba(255, 0, 0, 1);
             border-bottom: 1px solid #e5e5e5;
         }
 
@@ -51,6 +51,7 @@
             cursor: pointer;
             flex: 0 0 auto;
             padding: 0.5rem;
+            color: rgba(255, 255, 255, 1)
         }
 
         /* Icono lupa a la derecha */
@@ -68,11 +69,6 @@
             fill: none;
             stroke-width: 1.5;
             transition: transform 0.2s ease, color 0.2s ease;
-        }
-
-        .menu-toggle:hover .icon {
-            transform: scale(1.15);
-            color: #333;
         }
 
         .hamburger {
@@ -160,7 +156,7 @@
             position: absolute;
             height: 2px;
             width: 100%;
-            background: #000;
+            background: rgba(255, 255, 255, 1);
             left: 0;
             transition: transform 0.3s ease, top 0.3s ease, opacity 0.3s ease;
         }
@@ -200,6 +196,48 @@
             white-space: nowrap;
             border: 0;
         }
+
+        /* Buscador */
+        .header__search-link {
+            display: flex;
+            align-items: center;
+            background: transparent;
+            gap: 0.5rem;
+        }
+
+        .header__search-link input {
+            background: transparent;
+            border: none;
+            border-radius: 40px;
+            color: rgba(255, 255, 255, 1);
+            font-size: 1.1rem;
+            padding: 0.3rem 0.5rem;
+            width: 100px;
+            transition: width 0.3s ease;
+        }
+
+        .header__search-link input::placeholder {
+            color: rgba(255, 255, 255, 0.856);
+        }
+
+        .header__search-link input:focus {
+            outline: none;
+            width: 150px;
+            border: 1px solid rgb(255, 255, 255);
+        }
+
+        .header__search-link button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        
     </style>
 </head>
 
@@ -215,7 +253,7 @@
         <div class="header-center"></div>
 
         <div class="header-right">
-            <a href="/cart" class="menu-toggle" aria-controls="cart-drawer" data-no-instant="">
+            <a href="#" class="menu-toggle" aria-controls="cart-drawer" data-no-instant="">
                 <span class="sr-only">Carrito</span>
                 <svg aria-hidden="true" focusable="false" class="icon icon-cart" viewBox="0 0 16 16" fill="none"
                     width="24" height="24">
@@ -225,14 +263,19 @@
                 </svg>
             </a>
 
-            <a href="/search" class="menu-toggle header__search-link" aria-controls="search-drawer">
-                <span class="sr-only">Buscar</span>
-                <svg aria-hidden="true" focusable="false" class="icon icon-search" viewBox="0 0 16 16" fill="none"
-                    width="24" height="24">
-                    <path stroke-width="1" stroke="currentColor"
-                        d="M1.333 7.333a6 6 0 1 0 12 0 6 6 0 0 0-12 0ZM11.575 11.576l3.09 3.09"></path>
-                </svg>
-            </a>
+            <form class="menu-toggle header__search-link" role="search" action="/search" method="GET">
+                <label for="search-input" class="sr-only">Buscar</label>
+                <input id="search-input" type="text" name="q" placeholder="Buscar..."/>
+                <button type="submit" style="background: none; border: none; cursor: pointer;">
+                    <svg aria-hidden="true" focusable="false" class="icon icon-search" viewBox="0 0 16 16" fill="none"
+                        width="24" height="24">
+                        <path stroke-width="1" stroke="currentColor"
+                            d="M1.333 7.333a6 6 0 1 0 12 0 6 6 0 0 0-12 0ZM11.575 11.576l3.09 3.09">
+                        </path>
+                    </svg>
+                </button>
+            </form>
+
         </div>
     </header>
 
